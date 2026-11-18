@@ -1,0 +1,3 @@
+/* Feuille de style minimale : l'essentiel du style est injecte par content.js
+   (le shadow DOM n'est pas utilise pour rester compatible Safari web extension). */
+#mt-root { all: initial; }

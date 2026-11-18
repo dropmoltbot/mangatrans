@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "Mangatrans — traduction bulle à bulle, 100% locale",
+  "version": "1.0.0",
+  "description": "Clone hors-ligne de Torii : lit les bulles d'une page manga, traduit via un modèle local (PocketPal) et recompose le texte dans la bulle.",
+  "permissions": ["activeTab", "storage", "scripting"],
+  "host_permissions": [
+    "http://127.0.0.1:*/*",
+    "http://localhost:*/*",
+    "<all_urls>"
+  ],
+  "background": { "service_worker": "sw.js" },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["prompts.js", "ocr.js", "typeset.js", "content.js"],
+      "css": ["styles.css"],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Mangatrans"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["fonts/*"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
